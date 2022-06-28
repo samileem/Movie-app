@@ -23,25 +23,39 @@ const App = () => {
         }
   };
 
-        const addFavoriteMovie = (movie) => {
-          const newFavoriteList = [...favorites, movie];
-          setFavorites(newFavoriteList);
-                };
-
-        const removeFavoriteMovie = (movie) => {
-          const newFavoriteList = favorites.filter(
-            (favorite) =>favorite.imdbID !== movie.imdbID
-          );
-
-        setFavorites(newFavoriteList);
-        };
             
   useEffect(() => {
     getMovieRequest(searchValue);
   }, [searchValue]
   );
 
-	
+  useEffect(() => {
+		const movieFavorites = JSON.parse(
+			localStorage.getItem('react-movie-app-favorites')
+		);
+
+setFavorites(movieFavorites);
+    }, []);	
+
+    const saveToLocalStorage = (items) => {
+      localStorage.setItem('react-movie-app-favorites', JSON.stringify(items));
+    };
+
+    const addFavoriteMovie = (movie) => {
+      const newFavoriteList = [...favorites, movie];
+      setFavorites(newFavoriteList);
+      saveToLocalStorage(newFavoriteList);
+            };
+
+    const removeFavoriteMovie = (movie) => {
+      const newFavoriteList = favorites.filter(
+        (favorite) =>favorite.imdbID !== movie.imdbID
+      );
+
+    setFavorites(newFavoriteList);
+    saveToLocalStorage(newFavoriteList);
+    };
+
 	return (
 		<div className='container-fluid movie-app'>
 			<div className='row d-flex align-items-center mt-4 mb-4'>
