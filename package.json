@@ -1,0 +1,23 @@
+{
+  "name": "create-movie-app",
+  "description": "description",
+  "version": "0.0.0",
+  "author": "Samilee Moody <samilee.moody@gmail.com>",
+  "bin": "src/cli.js",
+  "files": [
+    "src",
+    "templates"
+  ],
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "create-create-app": "^7.2.1",
+    "create-react-app": "^5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "license": "UNLICENSED"
+}
