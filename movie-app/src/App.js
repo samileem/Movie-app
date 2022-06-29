@@ -26,15 +26,14 @@ const App = () => {
             
   useEffect(() => {
     getMovieRequest(searchValue);
-  }, [searchValue]
-  );
+  }, [searchValue]);
 
   useEffect(() => {
 		const movieFavorites = JSON.parse(
 			localStorage.getItem('react-movie-app-favorites')
 		);
 
-setFavorites(movieFavorites);
+  setFavorites(movieFavorites);
     }, []);	
 
     const saveToLocalStorage = (items) => {
@@ -63,7 +62,8 @@ setFavorites(movieFavorites);
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
         </div>
       <div className='row'>
-        <MovieList movies={movies} 
+        <MovieList 
+        movies={movies} 
         favoriteComponent={AddFavorite}
         handleFavoritesClick={addFavoriteMovie} />
       </div>
@@ -71,7 +71,8 @@ setFavorites(movieFavorites);
         <MovieListHeading heading='Favorites'/>
       </div>
       <div className='row'>
-        <MovieList movies={favorites} 
+        <MovieList 
+        movies={favorites} 
         handleFavoritesClick={removeFavoriteMovie}
         favoriteComponent={RemoveFavorites}/>
       </div>
